@@ -2,3 +2,10 @@ __pycache__/
 *.pyc
 .env
 *.sqlite
+venv/
+
+# Installed skills (managed by openclaw, not part of this repo)
+/*
+!/skills/
+!/README.md
+!/.gitignore

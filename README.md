@@ -8,6 +8,7 @@ Reusable skills for [OpenClaw](https://github.com/nicepkg/openclaw) agents.
 |-------|-------------|
 | [create-sticker](skills/create-sticker/) | Generate LINE-style character stickers with background removal using Google Gemini |
 | [tsticker](skills/tsticker/) | Manage Telegram sticker packs via `tsticker` CLI |
+| [searxng](skills/searxng/) | Privacy-respecting web search powered by local SearXNG instance |
 
 ## Guide
 
@@ -28,7 +29,16 @@ Reusable skills for [OpenClaw](https://github.com/nicepkg/openclaw) agents.
    source ~/.zshrc
    ```
 
-##### Installation
+### SearXNG（searxng 需要）
+
+searxng skill 需要本地运行 SearXNG 实例。详见 [searxng/SKILL.md](skills/searxng/SKILL.md) 中的 **First-time Deployment** 部分。
+
+可选环境变量：
+```bash
+export SEARXNG_URL="http://localhost:8888"   # 默认值
+```
+
+## Installation
 
 ```bash
 git clone <repo-url> ~/.openclaw/skills
