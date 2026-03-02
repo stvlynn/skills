@@ -1,96 +1,187 @@
-# Agent Skills
+<div align="center">
 
-可复用的 AI Agent 技能集合。兼容 [Skills CLI](https://github.com/vercel-labs/skills)。
+# 🧩 Agent Skills
+
+**模块化、可复用的 AI Agent 技能集合**
+
+[![Skills](https://img.shields.io/badge/skills-7-blue?style=flat-square)](#skills-列表)
+[![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
+[![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
+
+[English](README.md) · 中文文档
+
+</div>
+
+---
 
 ## 安装
 
 ### 通过 Skills CLI（推荐）
 
-使用 `npx skills add` 安装单个 skill：
+```bash
+npx skills add stvlynn/skills --skill create-sticker
+```
+
+<details>
+<summary>更多安装选项</summary>
 
 ```bash
-# 安装单个 skill
-npx skills add stvlynn/skills --skill create-sticker
-
 # 全局安装
 npx skills add stvlynn/skills --skill searxng -g -y
+
+# 安装全部 skills
+npx skills add stvlynn/skills --skill='*' -g
 
 # 安装前预览可用 skills
 npx skills add stvlynn/skills --list
 ```
 
-### 手动安装（git clone）
+</details>
+
+### 手动安装
 
 ```bash
 git clone https://github.com/stvlynn/skills.git
 ```
 
+---
+
 ## Skills 列表
 
-| Skill | 描述 |
-|-------|------|
-| [create-sticker](skills/create-sticker/) | 使用 Google Gemini 生成 LINE 风格角色贴纸，自动去背景 |
-| [tsticker](skills/tsticker/) | 通过 tsticker CLI 管理 Telegram 贴纸包 |
-| [searxng](skills/searxng/) | 基于本地 SearXNG 实例的隐私搜索引擎 |
-| [qwen-tts](skills/qwen-tts/) | Qwen3-TTS CustomVoice 文字转语音（MLX，Apple Silicon） |
-| [qwen-asr](skills/qwen-asr/) | Qwen3-ASR 语音转文字，本地 FastAPI 服务（MLX，Apple Silicon） |
-| [xiaohongshu](skills/xiaohongshu/) | 小红书搜索与帖子详情，基于 xiaohongshu-mcp 本地服务 |
-| [claude-code-operator](skills/claude-code-operator/) | 编程控制 Claude Code CLI — 启动、执行、部署 |
+### 🎨 媒体与创作
+
+| Skill | 描述 | 依赖 |
+|-------|------|------|
+| **[create-sticker](skills/create-sticker/)** | 使用 Google Gemini 生成 LINE 风格角色贴纸，自动去背景 | `GEMINI_API_KEY` |
+| **[tsticker](skills/tsticker/)** | 通过 tsticker CLI 管理 Telegram 贴纸包 | `tsticker`、Bot Token |
+
+### 🔊 语音
+
+| Skill | 描述 | 依赖 |
+|-------|------|------|
+| **[qwen-tts](skills/qwen-tts/)** | 9 种音色 + 情感控制的文字转语音 | Apple Silicon、MLX |
+| **[qwen-asr](skills/qwen-asr/)** | 本地 FastAPI 语音转文字服务 | Apple Silicon、MLX |
+
+### 🔍 搜索与数据
+
+| Skill | 描述 | 依赖 |
+|-------|------|------|
+| **[searxng](skills/searxng/)** | 聚合 70+ 搜索引擎的隐私搜索 | Docker |
+| **[xiaohongshu](skills/xiaohongshu/)** | 小红书搜索与帖子详情 | [xiaohongshu-mcp](https://github.com/peanut996/xiaohongshu-mcp) |
+
+### 🛠️ 开发工具
+
+| Skill | 描述 | 依赖 |
+|-------|------|------|
+| **[claude-code-operator](skills/claude-code-operator/)** | 编程控制 Claude Code CLI — 启动、执行、部署 | Claude Code |
+
+---
 
 ## 配置指南
 
-每个 skill 可能需要额外配置，详见各 skill 目录下的 `SKILL.md`。
+> 每个 skill 都有 `SKILL.md` 包含完整配置说明。以下为快速参考。
 
-### create-sticker
+<details>
+<summary><b>create-sticker</b> — Google Gemini 贴纸生成器</summary>
 
-<img width="712" height="760" alt="image" src="https://github.com/user-attachments/assets/c1784abd-0779-496d-b9bf-8e18b3ae66af" />
+<br>
 
-需要 `GEMINI_API_KEY`：
+<img width="712" height="760" alt="create-sticker 演示" src="https://github.com/user-attachments/assets/c1784abd-0779-496d-b9bf-8e18b3ae66af" />
 
 1. 前往 <https://aistudio.google.com/apikey> 获取 API Key
-2. 写入 shell 配置文件：
+2. 设置环境变量：
    ```bash
-   echo 'export GEMINI_API_KEY="your-api-key-here"' >> ~/.zshrc
-   source ~/.zshrc
+   export GEMINI_API_KEY="your-api-key-here"
    ```
-3. 安装 Python 依赖：
+3. 安装依赖：
    ```bash
-   cd skills/create-sticker/scripts
-   pip install -r requirements.txt
+   cd skills/create-sticker/scripts && pip install -r requirements.txt
    ```
 
-### searxng
+</details>
 
-需要本地运行 SearXNG 实例。详见 [searxng/SKILL.md](skills/searxng/SKILL.md) 中的 **First-time Deployment** 部分（Docker Compose 部署）。
+<details>
+<summary><b>searxng</b> — 本地 SearXNG 隐私搜索引擎</summary>
 
-可选环境变量：
+<br>
+
+需要 Docker。完整的 `docker-compose.yml` 和 `settings.yml` 配置见 [SKILL.md](skills/searxng/SKILL.md)。
+
 ```bash
-export SEARXNG_URL="http://localhost:8888"   # 默认值
+# Docker 配置完成后快速启动
+cd ~/service/searxng && docker compose up -d
 ```
 
-### qwen-tts / qwen-asr
+可选：`export SEARXNG_URL="http://localhost:8888"`
 
-两个 skill 都基于 MLX 运行，**仅支持 Apple Silicon Mac**。模型自动从 hf-mirror.com 下载。
+</details>
+
+<details>
+<summary><b>qwen-tts</b> — Qwen3-TTS 文字转语音</summary>
+
+<br>
+
+> **仅支持 Apple Silicon Mac。** 模型自动从 hf-mirror.com 下载（约 600MB）。
 
 ```bash
-# TTS 部署
 cd skills/qwen-tts
 python3 -m venv venv && source venv/bin/activate
 pip install -r scripts/requirements.txt
+python3 scripts/tts.py "你好！" --speaker Serena --instruct 开心
+```
 
-# ASR 部署
+9 种内置音色：`Serena` `Vivian` `Uncle_Fu` `Ryan` `Aiden` `Ono_Anna` `Sohee` `Eric` `Dylan`
+
+</details>
+
+<details>
+<summary><b>qwen-asr</b> — Qwen3-ASR 语音转文字服务</summary>
+
+<br>
+
+> **仅支持 Apple Silicon Mac。** 运行为 FastAPI 服务（端口 8100）。
+
+```bash
 cd skills/qwen-asr
 python3 -m venv venv && source venv/bin/activate
 pip install -r service/requirements.txt
-bash service/start.sh  # 启动 ASR 服务 (port 8100)
+bash service/start.sh
 ```
 
-详见各 skill 的 SKILL.md 中 **First-time Deployment** 部分。
+验证：`curl http://localhost:8100/health`
 
-### xiaohongshu
+</details>
 
-需要部署 [xiaohongshu-mcp](https://github.com/peanut996/xiaohongshu-mcp) 服务。首次使用需登录。
+<details>
+<summary><b>xiaohongshu</b> — 小红书搜索</summary>
 
-### claude-code-operator
+<br>
 
-需要安装 [Claude Code](https://docs.anthropic.com/en/docs/claude-code)（`npm install -g @anthropic-ai/claude-code`）。配置选项详见 [SKILL.md](skills/claude-code-operator/SKILL.md)。
+需要本地运行 [xiaohongshu-mcp](https://github.com/peanut996/xiaohongshu-mcp)。首次使用需登录：
+
+```bash
+cd /path/to/xiaohongshu-mcp
+./xiaohongshu-login  # 浏览器登录（一次性）
+./start.sh           # 启动服务（端口 18060）
+```
+
+</details>
+
+<details>
+<summary><b>claude-code-operator</b> — Claude Code CLI 自动化</summary>
+
+<br>
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+智谱配置和 MCP 部署工作流详见 [SKILL.md](skills/claude-code-operator/SKILL.md)。
+
+</details>
+
+---
+
+<div align="center">
+<sub>为 AI Agent 打造。兼容 <a href="https://github.com/vercel-labs/skills">Skills CLI</a>、<a href="https://claude.ai/code">Claude Code</a>，以及任何读取 <code>SKILL.md</code> 的 Agent。</sub>
+</div>

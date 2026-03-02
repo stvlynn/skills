@@ -1,98 +1,187 @@
-# Agent Skills
+<div align="center">
 
-Reusable skills for AI agents. Compatible with [Skills CLI](https://github.com/vercel-labs/skills).
+# 🧩 Agent Skills
 
-[中文文档](README.zh-CN.md)
+**Modular, reusable skills for AI coding agents.**
+
+[![Skills](https://img.shields.io/badge/skills-7-blue?style=flat-square)](#skills)
+[![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
+[![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
+
+[English](#installation) · [中文文档](README.zh-CN.md)
+
+</div>
+
+---
 
 ## Installation
 
 ### Via Skills CLI (recommended)
 
-Install individual skills with `npx skills add`:
+```bash
+npx skills add stvlynn/skills --skill create-sticker
+```
+
+<details>
+<summary>More installation options</summary>
 
 ```bash
-# Install a single skill
-npx skills add stvlynn/skills --skill create-sticker
-
 # Install globally
 npx skills add stvlynn/skills --skill searxng -g -y
 
-# List available skills before installing
+# Install all skills
+npx skills add stvlynn/skills --skill='*' -g
+
+# Preview available skills before installing
 npx skills add stvlynn/skills --list
 ```
 
-### Manual (git clone)
+</details>
+
+### Manual
 
 ```bash
 git clone https://github.com/stvlynn/skills.git
 ```
 
+---
+
 ## Skills
 
-| Skill | Description |
-|-------|-------------|
-| [create-sticker](skills/create-sticker/) | Generate LINE-style character stickers with background removal using Google Gemini |
-| [tsticker](skills/tsticker/) | Manage Telegram sticker packs via `tsticker` CLI |
-| [searxng](skills/searxng/) | Privacy-respecting web search powered by a local SearXNG instance |
-| [qwen-tts](skills/qwen-tts/) | Text-to-speech using Qwen3-TTS CustomVoice (MLX, Apple Silicon) |
-| [qwen-asr](skills/qwen-asr/) | Speech-to-text using Qwen3-ASR via local FastAPI service (MLX, Apple Silicon) |
-| [xiaohongshu](skills/xiaohongshu/) | Search and fetch Xiaohongshu (Little Red Book) posts via local MCP service |
-| [claude-code-operator](skills/claude-code-operator/) | Operate Claude Code CLI programmatically — spawn, execute, deploy |
+### 🎨 Media & Creative
+
+| Skill | Description | Requires |
+|-------|-------------|----------|
+| **[create-sticker](skills/create-sticker/)** | Generate LINE-style character stickers with background removal | `GEMINI_API_KEY` |
+| **[tsticker](skills/tsticker/)** | Manage Telegram sticker packs via `tsticker` CLI | `tsticker`, Bot Token |
+
+### 🔊 Speech
+
+| Skill | Description | Requires |
+|-------|-------------|----------|
+| **[qwen-tts](skills/qwen-tts/)** | Text-to-speech with 9 voices & emotion control | Apple Silicon, MLX |
+| **[qwen-asr](skills/qwen-asr/)** | Speech-to-text via local FastAPI service | Apple Silicon, MLX |
+
+### 🔍 Search & Data
+
+| Skill | Description | Requires |
+|-------|-------------|----------|
+| **[searxng](skills/searxng/)** | Privacy-respecting web search (70+ engines) | Docker |
+| **[xiaohongshu](skills/xiaohongshu/)** | Search & fetch Xiaohongshu posts | [xiaohongshu-mcp](https://github.com/peanut996/xiaohongshu-mcp) |
+
+### 🛠️ Developer Tools
+
+| Skill | Description | Requires |
+|-------|-------------|----------|
+| **[claude-code-operator](skills/claude-code-operator/)** | Operate Claude Code CLI — spawn, execute, deploy | Claude Code |
+
+---
 
 ## Setup
 
-Each skill may require additional setup. See the `SKILL.md` inside each skill directory for details.
+> Each skill has a `SKILL.md` with full setup instructions. Below is a quick reference.
 
-### create-sticker
+<details>
+<summary><b>create-sticker</b> — Google Gemini sticker generator</summary>
 
-<img width="712" height="760" alt="image" src="https://github.com/user-attachments/assets/c1784abd-0779-496d-b9bf-8e18b3ae66af" />
+<br>
 
-Requires `GEMINI_API_KEY`:
+<img width="712" height="760" alt="create-sticker demo" src="https://github.com/user-attachments/assets/c1784abd-0779-496d-b9bf-8e18b3ae66af" />
 
 1. Get an API key at <https://aistudio.google.com/apikey>
-2. Add to your shell profile:
+2. Set the environment variable:
    ```bash
-   echo 'export GEMINI_API_KEY="your-api-key-here"' >> ~/.zshrc
-   source ~/.zshrc
+   export GEMINI_API_KEY="your-api-key-here"
    ```
-3. Install Python dependencies:
+3. Install dependencies:
    ```bash
-   cd skills/create-sticker/scripts
-   pip install -r requirements.txt
+   cd skills/create-sticker/scripts && pip install -r requirements.txt
    ```
 
-### searxng
+</details>
 
-Requires a local SearXNG instance. See [searxng/SKILL.md](skills/searxng/SKILL.md) **First-time Deployment** section for Docker Compose setup.
+<details>
+<summary><b>searxng</b> — Local SearXNG metasearch engine</summary>
 
-Optional environment variable:
+<br>
+
+Requires Docker. See [SKILL.md](skills/searxng/SKILL.md) for a complete `docker-compose.yml` and `settings.yml` setup.
+
 ```bash
-export SEARXNG_URL="http://localhost:8888"  # default
+# Quick start (after Docker setup)
+cd ~/service/searxng && docker compose up -d
 ```
 
-### qwen-tts / qwen-asr
+Optional: `export SEARXNG_URL="http://localhost:8888"`
 
-Both run on MLX — **Apple Silicon Mac only**. Models are downloaded automatically from hf-mirror.com.
+</details>
+
+<details>
+<summary><b>qwen-tts</b> — Qwen3-TTS text-to-speech</summary>
+
+<br>
+
+> **Apple Silicon only.** Models download automatically from hf-mirror.com (~600MB).
 
 ```bash
-# TTS setup
 cd skills/qwen-tts
 python3 -m venv venv && source venv/bin/activate
 pip install -r scripts/requirements.txt
+python3 scripts/tts.py "Hello!" --speaker Ryan --language English
+```
 
-# ASR setup
+9 built-in voices: `Serena` `Vivian` `Uncle_Fu` `Ryan` `Aiden` `Ono_Anna` `Sohee` `Eric` `Dylan`
+
+</details>
+
+<details>
+<summary><b>qwen-asr</b> — Qwen3-ASR speech-to-text service</summary>
+
+<br>
+
+> **Apple Silicon only.** Runs as a FastAPI service on port 8100.
+
+```bash
 cd skills/qwen-asr
 python3 -m venv venv && source venv/bin/activate
 pip install -r service/requirements.txt
-bash service/start.sh  # starts ASR service on port 8100
+bash service/start.sh
 ```
 
-See each skill's `SKILL.md` for full deployment guides.
+Test: `curl http://localhost:8100/health`
 
-### xiaohongshu
+</details>
 
-Requires [xiaohongshu-mcp](https://github.com/peanut996/xiaohongshu-mcp) service running locally. Login required on first use.
+<details>
+<summary><b>xiaohongshu</b> — Xiaohongshu (Little Red Book) search</summary>
 
-### claude-code-operator
+<br>
 
-Requires [Claude Code](https://docs.anthropic.com/en/docs/claude-code) installed (`npm install -g @anthropic-ai/claude-code`). See [SKILL.md](skills/claude-code-operator/SKILL.md) for configuration options.
+Requires [xiaohongshu-mcp](https://github.com/peanut996/xiaohongshu-mcp) running locally. Login on first use:
+
+```bash
+cd /path/to/xiaohongshu-mcp
+./xiaohongshu-login  # one-time browser login
+./start.sh           # starts on port 18060
+```
+
+</details>
+
+<details>
+<summary><b>claude-code-operator</b> — Claude Code CLI automation</summary>
+
+<br>
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+See [SKILL.md](skills/claude-code-operator/SKILL.md) for Zhipu configuration and MCP deployment workflows.
+
+</details>
+
+---
+
+<div align="center">
+<sub>Built for AI agents. Works with <a href="https://github.com/vercel-labs/skills">Skills CLI</a>, <a href="https://claude.ai/code">Claude Code</a>, and any agent that reads <code>SKILL.md</code>.</sub>
+</div>
