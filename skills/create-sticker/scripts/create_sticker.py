@@ -17,8 +17,9 @@ REFERENCE_IMAGE = SKILL_DIR / "assets" / "example-character.jpeg"
 
 DEFAULT_MODEL = "gemini-3-pro-image-preview"
 
-RAW_DIR = Path.home() / ".openclaw" / "media" / "sticker" / "raw"
-OUTPUT_DIR = Path.home() / ".openclaw" / "media" / "sticker"
+_sticker_dir = os.environ.get("STICKER_OUTPUT_DIR", str(Path.home() / "stickers"))
+RAW_DIR = Path(_sticker_dir) / "raw"
+OUTPUT_DIR = Path(_sticker_dir)
 
 # Background color to remove
 BG_COLOR = (217, 217, 217)  # actual color from API output

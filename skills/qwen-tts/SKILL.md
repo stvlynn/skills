@@ -27,7 +27,7 @@ Text-to-speech using [Qwen3-TTS](https://github.com/QwenLM/Qwen3-TTS) CustomVoic
 ### 1. Create virtual environment
 
 ```bash
-cd ~/.openclaw/skills/skills/qwen-tts
+cd /path/to/skills/skills/qwen-tts
 python3 -m venv venv
 source venv/bin/activate
 ```
@@ -131,7 +131,7 @@ python3 scripts/tts.py "测试" --no-cleanup
 
 ## Audio Output
 
-- **Default directory**: `~/.openclaw/service/tts/`
+- **Default directory**: `~/tts-output/` (override with `$QWEN_TTS_OUTPUT_DIR`)
 - **File naming**: `tts_{timestamp}_{index}.wav`
 - **Auto-cleanup**: Files older than 24 hours removed on each run (disable with `--no-cleanup`)
 

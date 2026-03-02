@@ -1,7 +1,7 @@
 #!/bin/bash
 # SearXNG Search - Shell Aliases
 # Source this file in your .zshrc or .bashrc:
-#   source ~/.openclaw/skills/skills/searxng/aliases.sh
+#   source /path/to/skills/skills/searxng/aliases.sh
 
 SEARXNG_SEARCH_SCRIPT="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" && pwd)/scripts/search.py"
 

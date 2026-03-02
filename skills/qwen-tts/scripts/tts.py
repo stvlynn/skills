@@ -8,7 +8,7 @@ Usage:
     python tts.py "Text to speak" [--speaker SERENA] [--instruct INSTRUCT] [--speed SPEED]
 
 Output:
-    Files saved to: ~/.openclaw/service/tts/
+    Files saved to: ~/tts-output/ (or $QWEN_TTS_OUTPUT_DIR)
     Files older than 24 hours are automatically cleaned up.
 """
 import argparse
@@ -26,7 +26,7 @@ from mlx_audio.tts.utils import load_model
 import soundfile as sf
 
 # Configuration
-TTS_DIR = os.environ.get("QWEN_TTS_OUTPUT_DIR", os.path.expanduser("~/.openclaw/service/tts"))
+TTS_DIR = os.environ.get("QWEN_TTS_OUTPUT_DIR", os.path.expanduser("~/tts-output"))
 DEFAULT_MODEL = os.environ.get("QWEN_TTS_MODEL", "mlx-community/Qwen3-TTS-12Hz-0.6B-CustomVoice-4bit")
 # ⚠️ 以下为示例默认值，请根据实际使用场景修改
 DEFAULT_SPEAKER = "Serena"

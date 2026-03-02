@@ -45,8 +45,8 @@ python3 scripts/create_sticker.py "pose" --aspect 1:1 --size 2K
 ## File Storage & Naming
 
 ### Working Files
-- **Raw (gray bg):** `~/.openclaw/media/sticker/raw/{name}.png`
-- **Final (transparent):** `~/.openclaw/media/sticker/{name}.png`
+- **Raw (gray bg):** `$STICKER_OUTPUT_DIR/raw/{name}.png` (default: `~/stickers/raw/`)
+- **Final (transparent):** `$STICKER_OUTPUT_DIR/{name}.png` (default: `~/stickers/`)
 - **Naming:** lowercase English, underscores, max 60 chars
 
 ### Gallery (approved)

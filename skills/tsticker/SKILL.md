@@ -53,13 +53,13 @@ tsticker init -s regular -n 'lynn_stickers_by_<bot_name>' -t 'Lynn Stickers'
 ### 2. Generate stickers (create-sticker skill)
 
 ```bash
-python3 ~/.openclaw/skills/skills/create-sticker/scripts/create_sticker.py "drinking bubble tea happily"
+python3 /path/to/skills/skills/create-sticker/scripts/create_sticker.py "drinking bubble tea happily"
 ```
 
 ### 3. Copy approved stickers into pack
 
 ```bash
-cp ~/.openclaw/media/sticker/drinking_bubble_tea.png ~/Pictures/lynn-stickers/stickers/🧋drinking_tea.png
+cp ~/stickers/drinking_bubble_tea.png ~/Pictures/lynn-stickers/stickers/🧋drinking_tea.png
 ```
 
 Emoji prefix in filename sets the sticker's emoji. Without prefix, tsticker auto-selects.

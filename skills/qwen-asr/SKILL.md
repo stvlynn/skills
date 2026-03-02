@@ -27,7 +27,7 @@ Speech-to-text using [Qwen3-ASR](https://github.com/QwenLM/Qwen3-ASR) model, run
 ### 1. Create virtual environment
 
 ```bash
-cd ~/.openclaw/skills/skills/qwen-asr
+cd /path/to/skills/skills/qwen-asr
 python3 -m venv venv
 source venv/bin/activate
 ```
@@ -67,18 +67,18 @@ macOS 上可以使用 launchd 设置开机自启：
 
 ```bash
 # 创建 plist（自行修改路径）
-cat > ~/Library/LaunchAgents/com.openclaw.qwen-asr.plist << 'PLIST'
+cat > ~/Library/LaunchAgents/com.qwen.asr.plist << 'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.openclaw.qwen-asr</string>
+    <string>com.qwen.asr</string>
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
         <string>-c</string>
-        <string>cd ~/.openclaw/skills/skills/qwen-asr && bash service/start.sh</string>
+        <string>cd /path/to/skills/skills/qwen-asr && bash service/start.sh</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
@@ -92,7 +92,7 @@ cat > ~/Library/LaunchAgents/com.openclaw.qwen-asr.plist << 'PLIST'
 </plist>
 PLIST
 
-launchctl load ~/Library/LaunchAgents/com.openclaw.qwen-asr.plist
+launchctl load ~/Library/LaunchAgents/com.qwen.asr.plist
 ```
 
 ### Troubleshooting

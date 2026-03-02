@@ -1,6 +1,6 @@
-# OpenClaw Agent Skills
+# Agent Skills
 
-Reusable skills for [OpenClaw](https://github.com/nicepkg/openclaw) agents.
+Reusable skills for AI agents.
 
 ## Skills
 
@@ -46,12 +46,12 @@ export SEARXNG_URL="http://localhost:8888"   # 默认值
 
 ```bash
 # TTS 部署
-cd ~/.openclaw/skills/skills/qwen-tts
+cd skills/qwen-tts
 python3 -m venv venv && source venv/bin/activate
 pip install -r scripts/requirements.txt
 
 # ASR 部署
-cd ~/.openclaw/skills/skills/qwen-asr
+cd skills/qwen-asr
 python3 -m venv venv && source venv/bin/activate
 pip install -r service/requirements.txt
 bash service/start.sh  # 启动 ASR 服务 (port 8100)
@@ -62,7 +62,7 @@ bash service/start.sh  # 启动 ASR 服务 (port 8100)
 ## Installation
 
 ```bash
-git clone <repo-url> ~/.openclaw/skills
-cd ~/.openclaw/skills/skills/create-sticker/scripts
+git clone https://github.com/stvlynn/skills.git
+cd skills/skills/create-sticker/scripts
 pip install -r requirements.txt
 ```
