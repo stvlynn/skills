@@ -12,6 +12,7 @@ Reusable skills for AI agents.
 | [qwen-tts](skills/qwen-tts/) | Text-to-speech using Qwen3-TTS CustomVoice (MLX, Apple Silicon) |
 | [qwen-asr](skills/qwen-asr/) | Speech-to-text using Qwen3-ASR via local FastAPI service (MLX, Apple Silicon) |
 | [xiaohongshu](skills/xiaohongshu/) | 小红书搜索与帖子详情，基于 xiaohongshu-mcp 本地服务 |
+| [claude-code-operator](skills/claude-code-operator/) | Operate Claude Code CLI programmatically — spawn, execute, deploy |
 
 ## Guide
 
