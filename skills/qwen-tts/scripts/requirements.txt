@@ -1,0 +1,4 @@
+mlx-audio>=0.3.0
+mlx-lm>=0.30.0
+numpy>=1.24.0
+soundfile>=0.12.0

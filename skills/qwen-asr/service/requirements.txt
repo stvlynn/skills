@@ -1,0 +1,10 @@
+transformers>=4.40.0
+accelerate>=0.30.0
+torch>=2.1.0
+mlx-audio>=0.3.0
+mlx-lm>=0.30.0
+fastapi>=0.110.0
+uvicorn>=0.27.0
+httpx>=0.26.0
+pydantic>=2.5.0
+python-multipart>=0.0.6
