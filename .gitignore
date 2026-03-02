@@ -8,4 +8,5 @@ venv/
 /*
 !/skills/
 !/README.md
+!/README.*.md
 !/.gitignore
