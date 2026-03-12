@@ -4,7 +4,7 @@
 
 **Modular, reusable skills for AI coding agents.**
 
-[![Skills](https://img.shields.io/badge/skills-7-blue?style=flat-square)](#skills)
+[![Skills](https://img.shields.io/badge/skills-8-blue?style=flat-square)](#skills)
 [![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
 [![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
 
@@ -74,6 +74,7 @@ git clone https://github.com/stvlynn/skills.git
 | Skill | Description | Requires |
 |-------|-------------|----------|
 | **[claude-code-operator](skills/claude-code-operator/)** | Operate Claude Code CLI — spawn, execute, deploy | Claude Code |
+| **[tip-gui-skill](skills/tip-gui-skill/)** | Reuse Youtu-Tip as a guarded local GUI bridge for desktop automation | macOS, Youtu-Tip |
 
 ---
 
