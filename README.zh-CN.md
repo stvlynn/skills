@@ -4,7 +4,7 @@
 
 **模块化、可复用的 AI Agent 技能集合**
 
-[![Skills](https://img.shields.io/badge/skills-7-blue?style=flat-square)](#skills-列表)
+[![Skills](https://img.shields.io/badge/skills-9-blue?style=flat-square)](#skills-列表)
 [![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
 [![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
 
@@ -69,11 +69,18 @@ git clone https://github.com/stvlynn/skills.git
 | **[searxng](skills/searxng/)** | 聚合 70+ 搜索引擎的隐私搜索 | Docker |
 | **[xiaohongshu](skills/xiaohongshu/)** | 小红书搜索与帖子详情 | [xiaohongshu-mcp](https://github.com/peanut996/xiaohongshu-mcp) |
 
+### 🎛️ UI 与设计
+
+| Skill | 描述 | 依赖 |
+|-------|------|------|
+| **[atlassian-design](skills/atlassian-design/)** | 本地 Atlassian Design System 参考 skill，覆盖 Atlaskit、ADS 组件、`xcss`、primitives 和 Jira 风格 React 界面模式 | 无 |
+
 ### 🛠️ 开发工具
 
 | Skill | 描述 | 依赖 |
 |-------|------|------|
 | **[claude-code-operator](skills/claude-code-operator/)** | 编程控制 Claude Code CLI — 启动、执行、部署 | Claude Code |
+| **[tip-gui-skill](skills/tip-gui-skill/)** | 将 Youtu-Tip 复用为受保护的本地 GUI 桥接，用于桌面自动化 | macOS、Youtu-Tip |
 
 ---
 
@@ -163,6 +170,40 @@ bash service/start.sh
 cd /path/to/xiaohongshu-mcp
 ./xiaohongshu-login  # 浏览器登录（一次性）
 ./start.sh           # 启动服务（端口 18060）
+```
+
+</details>
+
+<details>
+<summary><b>atlassian-design</b> — Atlassian Design System 本地参考包</summary>
+
+<br>
+
+无需额外运行时配置。这个 skill 打包了 Atlassian Design System 文档镜像，适合用于：
+
+- 选择 `@atlaskit/*` 组件
+- 查阅 `@atlaskit/primitives`、`xcss`、`@atlaskit/css`
+- 参考 Jira 风格导航、表单、布局和反馈模式
+
+建议先从 [references/index.md](skills/atlassian-design/references/index.md) 开始定位对应文档。
+
+</details>
+
+<details>
+<summary><b>tip-gui-skill</b> — 受保护的 Youtu-Tip 桌面桥接</summary>
+
+<br>
+
+需要 macOS 和已安装的 Youtu-Tip，并授予以下系统权限：
+
+- 辅助功能
+- 屏幕录制
+
+快速检查：
+
+```bash
+python3 skills/tip-gui-skill/scripts/tip_gui_bridge.py health
+python3 skills/tip-gui-skill/scripts/tip_gui_bridge.py config
 ```
 
 </details>

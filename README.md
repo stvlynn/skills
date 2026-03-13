@@ -4,7 +4,7 @@
 
 **Modular, reusable skills for AI coding agents.**
 
-[![Skills](https://img.shields.io/badge/skills-8-blue?style=flat-square)](#skills)
+[![Skills](https://img.shields.io/badge/skills-9-blue?style=flat-square)](#skills)
 [![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
 [![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
 
@@ -68,6 +68,12 @@ git clone https://github.com/stvlynn/skills.git
 |-------|-------------|----------|
 | **[searxng](skills/searxng/)** | Privacy-respecting web search (70+ engines) | Docker |
 | **[xiaohongshu](skills/xiaohongshu/)** | Search & fetch Xiaohongshu posts | [xiaohongshu-mcp](https://github.com/peanut996/xiaohongshu-mcp) |
+
+### 🎛️ UI & Design
+
+| Skill | Description | Requires |
+|-------|-------------|----------|
+| **[atlassian-design](skills/atlassian-design/)** | Local Atlassian Design System reference skill for Atlaskit, ADS components, xcss, primitives, and Jira-style React UI patterns | None |
 
 ### 🛠️ Developer Tools
 
@@ -164,6 +170,40 @@ Requires [xiaohongshu-mcp](https://github.com/peanut996/xiaohongshu-mcp) running
 cd /path/to/xiaohongshu-mcp
 ./xiaohongshu-login  # one-time browser login
 ./start.sh           # starts on port 18060
+```
+
+</details>
+
+<details>
+<summary><b>atlassian-design</b> — Atlassian Design System reference bundle</summary>
+
+<br>
+
+No runtime setup required. This skill packages a local mirror of the Atlassian Design System docs for:
+
+- `@atlaskit/*` component selection
+- `@atlaskit/primitives`, `xcss`, and `@atlaskit/css`
+- Jira-style navigation, forms, layout, and feedback patterns
+
+Start with [references/index.md](skills/atlassian-design/references/index.md) to route to the right mirrored docs.
+
+</details>
+
+<details>
+<summary><b>tip-gui-skill</b> — Guarded Youtu-Tip desktop bridge</summary>
+
+<br>
+
+Requires macOS and Youtu-Tip with the needed system permissions:
+
+- Accessibility
+- Screen Recording
+
+Quick checks:
+
+```bash
+python3 skills/tip-gui-skill/scripts/tip_gui_bridge.py health
+python3 skills/tip-gui-skill/scripts/tip_gui_bridge.py config
 ```
 
 </details>
