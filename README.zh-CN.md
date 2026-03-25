@@ -4,7 +4,7 @@
 
 **模块化、可复用的 AI Agent 技能集合**
 
-[![Skills](https://img.shields.io/badge/skills-9-blue?style=flat-square)](#skills-列表)
+[![Skills](https://img.shields.io/badge/skills-10-blue?style=flat-square)](#skills-列表)
 [![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
 [![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
 
@@ -53,6 +53,7 @@ git clone https://github.com/stvlynn/skills.git
 | Skill | 描述 | 依赖 |
 |-------|------|------|
 | **[create-sticker](skills/create-sticker/)** | 使用 Google Gemini 生成 LINE 风格角色贴纸，自动去背景 | `GEMINI_API_KEY` |
+| **[pv-tool](skills/pv-tool/)** | 运行内置的 PV 动态排版 Web 工具，用于歌词视频、媒体叠加和模板化动效制作 | Node.js 20+、npm |
 | **[tsticker](skills/tsticker/)** | 通过 tsticker CLI 管理 Telegram 贴纸包 | `tsticker`、Bot Token |
 
 ### 🔊 语音
@@ -87,6 +88,8 @@ git clone https://github.com/stvlynn/skills.git
 ## 配置指南
 
 > 每个 skill 都有 `SKILL.md` 包含完整配置说明。以下为快速参考。
+>
+> 许可说明：`pv-tool` 内置了上游源码，并沿用其单独的非商用许可证。见 `skills/pv-tool/app/LICENSE` 和 `skills/pv-tool/app/COMMERCIAL.md`。
 
 <details>
 <summary><b>create-sticker</b> — Google Gemini 贴纸生成器</summary>
@@ -104,6 +107,32 @@ git clone https://github.com/stvlynn/skills.git
    ```bash
    cd skills/create-sticker/scripts && pip install -r requirements.txt
    ```
+
+</details>
+
+<details>
+<summary><b>pv-tool</b> — PV 动态排版 Web 工具</summary>
+
+<br>
+
+这个 skill 将上游 `pv-tool` 应用内置在 `skills/pv-tool/app/` 下，并补充了简洁的运行与构建脚本。
+
+```bash
+cd skills/pv-tool
+bash scripts/bootstrap.sh
+bash scripts/dev.sh
+```
+
+默认开发地址：`http://127.0.0.1:4173/pv-tool/`
+
+其他常用命令：
+
+```bash
+bash scripts/build.sh
+bash scripts/preview.sh
+```
+
+注意：内置的上游应用采用非商用许可证。见 [app/LICENSE](skills/pv-tool/app/LICENSE) 和 [app/COMMERCIAL.md](skills/pv-tool/app/COMMERCIAL.md)。
 
 </details>
 

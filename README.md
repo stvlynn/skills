@@ -4,7 +4,7 @@
 
 **Modular, reusable skills for AI coding agents.**
 
-[![Skills](https://img.shields.io/badge/skills-9-blue?style=flat-square)](#skills)
+[![Skills](https://img.shields.io/badge/skills-10-blue?style=flat-square)](#skills)
 [![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
 [![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
 
@@ -53,6 +53,7 @@ git clone https://github.com/stvlynn/skills.git
 | Skill | Description | Requires |
 |-------|-------------|----------|
 | **[create-sticker](skills/create-sticker/)** | Generate LINE-style character stickers with background removal | `GEMINI_API_KEY` |
+| **[pv-tool](skills/pv-tool/)** | Run a bundled kinetic typography PV web app for lyric videos, media overlays, and template-driven motion graphics | Node.js 20+, npm |
 | **[tsticker](skills/tsticker/)** | Manage Telegram sticker packs via `tsticker` CLI | `tsticker`, Bot Token |
 
 ### 🔊 Speech
@@ -87,6 +88,8 @@ git clone https://github.com/stvlynn/skills.git
 ## Setup
 
 > Each skill has a `SKILL.md` with full setup instructions. Below is a quick reference.
+>
+> Licensing note: `pv-tool` vendors upstream code under its own non-commercial license. See `skills/pv-tool/app/LICENSE` and `skills/pv-tool/app/COMMERCIAL.md`.
 
 <details>
 <summary><b>create-sticker</b> — Google Gemini sticker generator</summary>
@@ -104,6 +107,32 @@ git clone https://github.com/stvlynn/skills.git
    ```bash
    cd skills/create-sticker/scripts && pip install -r requirements.txt
    ```
+
+</details>
+
+<details>
+<summary><b>pv-tool</b> — Kinetic typography PV web app</summary>
+
+<br>
+
+This skill bundles the upstream `pv-tool` app under `skills/pv-tool/app/` and wraps it with simple run/build scripts.
+
+```bash
+cd skills/pv-tool
+bash scripts/bootstrap.sh
+bash scripts/dev.sh
+```
+
+Default dev URL: `http://127.0.0.1:4173/pv-tool/`
+
+Other common commands:
+
+```bash
+bash scripts/build.sh
+bash scripts/preview.sh
+```
+
+Important: the bundled upstream app is released under a non-commercial license. See [app/LICENSE](skills/pv-tool/app/LICENSE) and [app/COMMERCIAL.md](skills/pv-tool/app/COMMERCIAL.md).
 
 </details>
 
