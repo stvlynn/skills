@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scroll Fade Mask"
+  short_description: "Reusable scroll fade mask patterns"
+  default_prompt: "Use $scroll-fade-mask to add gradient scroll-edge fades to this scrollable UI."

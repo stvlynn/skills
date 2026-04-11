@@ -1,0 +1,101 @@
+{
+  "skill_name": "scroll-fade-mask",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a React app with a long dropdown menu (like 50+ options) and I want to add those nice gradient fades at the top and bottom like you see in iOS apps, so users know there's more content to scroll. The dropdown has a white background and max height of 320px. Can you help me implement this?",
+      "expected_output": "Complete implementation including: (1) CSS with wrapper pattern and white background variant, (2) React useScrollFade hook with TypeScript, (3) Integration example showing how to wrap the dropdown, (4) Explanation of the wrapper pattern and why it's needed",
+      "files": [],
+      "assertions": [
+        {
+          "name": "uses_wrapper_pattern",
+          "description": "Implementation uses the wrapper pattern (parent holds masks via pseudo-elements, child scrolls) rather than conditional rendering of fade divs"
+        },
+        {
+          "name": "provides_reusable_hook",
+          "description": "Provides a reusable useScrollFade hook that can be imported and used in other components, not just inline scroll logic"
+        },
+        {
+          "name": "includes_resize_observer",
+          "description": "Uses ResizeObserver to handle dynamic content height changes, not just scroll events"
+        },
+        {
+          "name": "uses_data_attributes",
+          "description": "Uses data-fade-top and data-fade-bottom attributes to control mask visibility via CSS, not inline styles or conditional rendering"
+        },
+        {
+          "name": "multi_stop_gradient",
+          "description": "Gradient uses multiple opacity stops (6+ stops) for smooth fade, not just a simple two-color gradient"
+        },
+        {
+          "name": "white_background_variant",
+          "description": "Explicitly uses or mentions fc-scroll-fade-wrapper-white class for white backgrounds"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "hey so i added scroll fade masks to my vue 3 sidebar but now i can't scroll at all?? the content is there but it won't move when i try to scroll. here's what i did: i wrapped my sidebar-list div with the fc-scroll-fade-wrapper and added the data attributes but scrolling just doesn't work. what am i doing wrong",
+      "expected_output": "Troubleshooting response that: (1) Identifies likely causes (overflow: hidden on wrapper, missing overflow-y: auto on content, height constraints), (2) Provides debug checklist with console commands, (3) Shows correct CSS structure with conditional rules, (4) Explains the wrapper should NOT have overflow properties",
+      "files": [],
+      "assertions": [
+        {
+          "name": "identifies_overflow_hidden_issue",
+          "description": "Explicitly identifies that overflow: hidden on the wrapper is a common cause of the scrolling problem"
+        },
+        {
+          "name": "explains_wrapper_no_overflow",
+          "description": "Clearly states that the wrapper should NOT have overflow properties - the inner content element should have overflow-y: auto"
+        },
+        {
+          "name": "provides_correct_architecture",
+          "description": "Shows the correct two-layer architecture: wrapper (position: relative, no overflow) + inner content (overflow-y: auto, height constraint)"
+        },
+        {
+          "name": "includes_vue_composable",
+          "description": "Provides Vue 3 Composition API code (ref, onMounted, onUnmounted) for scroll detection, not just CSS fixes"
+        },
+        {
+          "name": "mentions_height_constraint",
+          "description": "Mentions that the scroll container needs a height constraint (height: 100%, max-height, or flex: 1)"
+        },
+        {
+          "name": "no_incorrect_wrapper_scroll",
+          "description": "Does NOT incorrectly recommend putting overflow-y: auto on the wrapper itself (this breaks the pseudo-element mask pattern)"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I'm building a chat interface in vanilla JavaScript (no frameworks) and want to add scroll fade indicators at the top/bottom of the message list. The background is a light beige color (#f5f2ef). The messages are in a div with class 'chat-messages' that's inside a flex container. How do I implement this without React or Vue?",
+      "expected_output": "Complete vanilla JS implementation including: (1) CSS with custom beige color variant or guidance to use fc-scroll-fade-wrapper-warm, (2) ScrollFadeMask class with init/destroy methods, (3) Usage example showing how to instantiate, (4) HTML structure with wrapper pattern, (5) Explanation of how to integrate with existing flex layout",
+      "files": [],
+      "assertions": [
+        {
+          "name": "provides_vanilla_js_class",
+          "description": "Provides a JavaScript class (not React/Vue) that can be instantiated with new ScrollFadeMask(element)"
+        },
+        {
+          "name": "custom_background_color",
+          "description": "Either provides CSS with #f5f2ef background color in gradients, or mentions fc-scroll-fade-wrapper-warm class, or explains how to customize gradient colors"
+        },
+        {
+          "name": "includes_init_destroy",
+          "description": "Class has proper lifecycle methods (init/constructor and destroy/cleanup) for adding/removing event listeners"
+        },
+        {
+          "name": "uses_wrapper_pattern_vanilla",
+          "description": "Uses the wrapper pattern with CSS classes and data attributes, not inline style manipulation"
+        },
+        {
+          "name": "resize_observer_vanilla",
+          "description": "Uses ResizeObserver in the vanilla JS implementation for dynamic content changes"
+        },
+        {
+          "name": "flex_layout_guidance",
+          "description": "Mentions or shows how to integrate with flex containers (min-height: 0, flex: 1, etc.)"
+        }
+      ]
+    }
+  ]
+}

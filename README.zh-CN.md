@@ -75,6 +75,7 @@ git clone https://github.com/stvlynn/skills.git
 | Skill | 描述 | 依赖 |
 |-------|------|------|
 | **[atlassian-design](skills/atlassian-design/)** | 本地 Atlassian Design System 参考 skill，覆盖 Atlaskit、ADS 组件、`xcss`、primitives 和 Jira 风格 React 界面模式 | 无 |
+| **[scroll-fade-mask](skills/scroll-fade-mask/)** | 为列表、下拉框、侧边栏、弹层和聊天面板实现并排查可复用的滚动渐隐遮罩，支持 React、Vue、Svelte 和原生 JavaScript | 无 |
 
 ### 🛠️ 开发工具
 

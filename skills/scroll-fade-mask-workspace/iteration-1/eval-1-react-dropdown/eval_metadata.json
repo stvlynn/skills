@@ -1,0 +1,31 @@
+{
+  "eval_id": 1,
+  "eval_name": "react-dropdown-scroll-fade",
+  "prompt": "I have a React app with a long dropdown menu (like 50+ options) and I want to add those nice gradient fades at the top and bottom like you see in iOS apps, so users know there's more content to scroll. The dropdown has a white background and max height of 320px. Can you help me implement this?",
+  "assertions": [
+    {
+      "name": "uses_wrapper_pattern",
+      "description": "Implementation uses the wrapper pattern (parent holds masks via pseudo-elements, child scrolls) rather than conditional rendering of fade divs"
+    },
+    {
+      "name": "provides_reusable_hook",
+      "description": "Provides a reusable useScrollFade hook that can be imported and used in other components, not just inline scroll logic"
+    },
+    {
+      "name": "includes_resize_observer",
+      "description": "Uses ResizeObserver to handle dynamic content height changes, not just scroll events"
+    },
+    {
+      "name": "uses_data_attributes",
+      "description": "Uses data-fade-top and data-fade-bottom attributes to control mask visibility via CSS, not inline styles or conditional rendering"
+    },
+    {
+      "name": "multi_stop_gradient",
+      "description": "Gradient uses multiple opacity stops (6+ stops) for smooth fade, not just a simple two-color gradient"
+    },
+    {
+      "name": "white_background_variant",
+      "description": "Explicitly uses or mentions fc-scroll-fade-wrapper-white class for white backgrounds"
+    }
+  ]
+}

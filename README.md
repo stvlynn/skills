@@ -75,6 +75,7 @@ git clone https://github.com/stvlynn/skills.git
 | Skill | Description | Requires |
 |-------|-------------|----------|
 | **[atlassian-design](skills/atlassian-design/)** | Local Atlassian Design System reference skill for Atlaskit, ADS components, xcss, primitives, and Jira-style React UI patterns | None |
+| **[scroll-fade-mask](skills/scroll-fade-mask/)** | Implement and troubleshoot reusable scroll fade masks for lists, dropdowns, sidebars, modals, and chat panes across React, Vue, Svelte, and vanilla JS | None |
 
 ### 🛠️ Developer Tools
 

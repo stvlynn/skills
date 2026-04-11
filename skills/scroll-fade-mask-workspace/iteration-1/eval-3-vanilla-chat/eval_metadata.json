@@ -1,0 +1,31 @@
+{
+  "eval_id": 3,
+  "eval_name": "vanilla-js-chat-scroll-fade",
+  "prompt": "I'm building a chat interface in vanilla JavaScript (no frameworks) and want to add scroll fade indicators at the top/bottom of the message list. The background is a light beige color (#f5f2ef). The messages are in a div with class 'chat-messages' that's inside a flex container. How do I implement this without React or Vue?",
+  "assertions": [
+    {
+      "name": "provides_vanilla_js_class",
+      "description": "Provides a JavaScript class (not React/Vue) that can be instantiated with new ScrollFadeMask(element)"
+    },
+    {
+      "name": "custom_background_color",
+      "description": "Either provides CSS with #f5f2ef background color in gradients, or mentions fc-scroll-fade-wrapper-warm class, or explains how to customize gradient colors"
+    },
+    {
+      "name": "includes_init_destroy",
+      "description": "Class has proper lifecycle methods (init/constructor and destroy/cleanup) for adding/removing event listeners"
+    },
+    {
+      "name": "uses_wrapper_pattern_vanilla",
+      "description": "Uses the wrapper pattern with CSS classes and data attributes, not inline style manipulation"
+    },
+    {
+      "name": "resize_observer_vanilla",
+      "description": "Uses ResizeObserver in the vanilla JS implementation for dynamic content changes"
+    },
+    {
+      "name": "flex_layout_guidance",
+      "description": "Mentions or shows how to integrate with flex containers (min-height: 0, flex: 1, etc.)"
+    }
+  ]
+}
