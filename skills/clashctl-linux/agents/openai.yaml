@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clash for Linux Install"
+  short_description: "Bootstrap and troubleshoot clashctl-linux"
+  default_prompt: "Use $clashctl-linux to initialize, operate, or troubleshoot nelvko/clash-for-linux-install on this Linux host, trying GitHub first and the bundled project copy if GitHub access stalls."

@@ -3,6 +3,7 @@ __pycache__/
 .env
 *.sqlite
 venv/
+.DS_Store
 
 # Installed skills (managed by openclaw, not part of this repo)
 /*

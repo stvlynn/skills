@@ -4,7 +4,7 @@
 
 **Modular, reusable skills for AI coding agents.**
 
-[![Skills](https://img.shields.io/badge/skills-10-blue?style=flat-square)](#skills)
+[![Skills](https://img.shields.io/badge/skills-11-blue?style=flat-square)](#skills)
 [![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
 [![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
 
@@ -80,6 +80,7 @@ git clone https://github.com/stvlynn/skills.git
 
 | Skill | Description | Requires |
 |-------|-------------|----------|
+| **[clashctl-linux](skills/clashctl-linux/)** | Bootstrap, operate, and troubleshoot clashctl-linux, with a trimmed vendored upstream fallback for GitHub-constrained environments | Linux, `git` recommended |
 | **[claude-code-operator](skills/claude-code-operator/)** | Operate Claude Code CLI — spawn, execute, deploy | Claude Code |
 | **[tip-gui-skill](skills/tip-gui-skill/)** | Reuse Youtu-Tip as a guarded local GUI bridge for desktop automation | macOS, Youtu-Tip |
 
@@ -90,6 +91,38 @@ git clone https://github.com/stvlynn/skills.git
 > Each skill has a `SKILL.md` with full setup instructions. Below is a quick reference.
 >
 > Licensing note: `pv-tool` vendors upstream code under its own non-commercial license. See `skills/pv-tool/app/LICENSE` and `skills/pv-tool/app/COMMERCIAL.md`.
+
+<details>
+<summary><b>clashctl-linux</b> — Bootstrap and operate Clash/Mihomo on Linux</summary>
+
+<br>
+
+This skill vendors a trimmed copy of the upstream `nelvko/clash-for-linux-install` project under `skills/clashctl-linux/scripts/upstream-project/`.
+
+Recommended bootstrap flow:
+
+```bash
+rm -rf /tmp/clash-for-linux-install
+git clone --depth 1 https://github.com/nelvko/clash-for-linux-install.git /tmp/clash-for-linux-install || {
+  mkdir -p /tmp/clash-for-linux-install
+  cp -R skills/clashctl-linux/scripts/upstream-project/. /tmp/clash-for-linux-install/
+}
+cd /tmp/clash-for-linux-install
+bash install.sh
+```
+
+After installation, the upstream project exposes shell functions and wrappers such as:
+
+- `clashctl on`
+- `clashctl off`
+- `clashon`
+- `clashoff`
+- `clashsub`
+- `clashmixin`
+
+See [SKILL.md](skills/clashctl-linux/SKILL.md) for the full initialization flow, SOP, and troubleshooting guidance.
+
+</details>
 
 <details>
 <summary><b>create-sticker</b> — Google Gemini sticker generator</summary>

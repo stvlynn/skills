@@ -4,7 +4,7 @@
 
 **模块化、可复用的 AI Agent 技能集合**
 
-[![Skills](https://img.shields.io/badge/skills-10-blue?style=flat-square)](#skills-列表)
+[![Skills](https://img.shields.io/badge/skills-11-blue?style=flat-square)](#skills-列表)
 [![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
 [![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
 
@@ -80,6 +80,7 @@ git clone https://github.com/stvlynn/skills.git
 
 | Skill | 描述 | 依赖 |
 |-------|------|------|
+| **[clashctl-linux](skills/clashctl-linux/)** | 初始化、使用和排障 clash for linux，并内置一份裁剪后的上游项目副本以应对 GitHub 访问受限环境 | Linux，推荐有 `git` |
 | **[claude-code-operator](skills/claude-code-operator/)** | 编程控制 Claude Code CLI — 启动、执行、部署 | Claude Code |
 | **[tip-gui-skill](skills/tip-gui-skill/)** | 将 Youtu-Tip 复用为受保护的本地 GUI 桥接，用于桌面自动化 | macOS、Youtu-Tip |
 
@@ -90,6 +91,38 @@ git clone https://github.com/stvlynn/skills.git
 > 每个 skill 都有 `SKILL.md` 包含完整配置说明。以下为快速参考。
 >
 > 许可说明：`pv-tool` 内置了上游源码，并沿用其单独的非商用许可证。见 `skills/pv-tool/app/LICENSE` 和 `skills/pv-tool/app/COMMERCIAL.md`。
+
+<details>
+<summary><b>clashctl-linux</b> — Linux 上的 Clash/Mihomo 初始化与运维</summary>
+
+<br>
+
+这个 skill 在 `skills/clashctl-linux/scripts/upstream-project/` 下内置了上游 `nelvko/clash-for-linux-install` 项目的裁剪副本。
+
+推荐初始化流程：
+
+```bash
+rm -rf /tmp/clash-for-linux-install
+git clone --depth 1 https://github.com/nelvko/clash-for-linux-install.git /tmp/clash-for-linux-install || {
+  mkdir -p /tmp/clash-for-linux-install
+  cp -R skills/clashctl-linux/scripts/upstream-project/. /tmp/clash-for-linux-install/
+}
+cd /tmp/clash-for-linux-install
+bash install.sh
+```
+
+安装完成后，上游项目会提供这类 shell functions / wrappers：
+
+- `clashctl on`
+- `clashctl off`
+- `clashon`
+- `clashoff`
+- `clashsub`
+- `clashmixin`
+
+完整的初始化流程、SOP 和排障说明见 [SKILL.md](skills/clashctl-linux/SKILL.md)。
+
+</details>
 
 <details>
 <summary><b>create-sticker</b> — Google Gemini 贴纸生成器</summary>
