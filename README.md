@@ -4,7 +4,7 @@
 
 **Modular, reusable skills for AI coding agents.**
 
-[![Skills](https://img.shields.io/badge/skills-11-blue?style=flat-square)](#skills)
+[![Skills](https://img.shields.io/badge/skills-12-blue?style=flat-square)](#skills)
 [![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
 [![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
 
@@ -60,6 +60,7 @@ git clone https://github.com/stvlynn/skills.git
 
 | Skill | Description | Requires |
 |-------|-------------|----------|
+| **[kesha-voice-kit](skills/kesha-voice-kit/)** | Local STT+TTS voice toolkit — 25-lang speech-to-text (~19× faster than Whisper on Apple Silicon), TTS (Kokoro + Vosk-TTS + ~180 macOS voices, SSML), VAD, language detection. Rust engine, no cloud required. | macOS / Linux / Windows, `bun` |
 | **[qwen-tts](skills/qwen-tts/)** | Text-to-speech with 9 voices & emotion control | Apple Silicon, MLX |
 | **[qwen-asr](skills/qwen-asr/)** | Speech-to-text via local FastAPI service | Apple Silicon, MLX |
 
@@ -92,6 +93,36 @@ git clone https://github.com/stvlynn/skills.git
 > Each skill has a `SKILL.md` with full setup instructions. Below is a quick reference.
 >
 > Licensing note: `pv-tool` vendors upstream code under its own non-commercial license. See `skills/pv-tool/app/LICENSE` and `skills/pv-tool/app/COMMERCIAL.md`.
+
+<details>
+<summary><b>kesha-voice-kit</b> — Local multilingual STT + TTS voice toolkit</summary>
+
+<br>
+
+Install the CLI and download the engine:
+
+```bash
+bun add -g @drakulavich/kesha-voice-kit
+kesha install           # downloads ASR engine (~350 MB)
+kesha install --tts     # optional: Kokoro + Vosk-TTS (~990 MB more)
+```
+
+Transcribe a voice message:
+
+```bash
+kesha --json voice.ogg
+```
+
+Synthesize speech:
+
+```bash
+kesha say "Hello, world" > hello.wav
+kesha say "Hello" --format ogg-opus --out reply.ogg   # Telegram-ready voice note
+```
+
+See [SKILL.md](skills/kesha-voice-kit/SKILL.md) for OpenClaw plugin setup, full language list, and advanced options.
+
+</details>
 
 <details>
 <summary><b>clashctl-linux</b> — Bootstrap and operate Clash/Mihomo on Linux</summary>

@@ -4,7 +4,7 @@
 
 **模块化、可复用的 AI Agent 技能集合**
 
-[![Skills](https://img.shields.io/badge/skills-11-blue?style=flat-square)](#skills-列表)
+[![Skills](https://img.shields.io/badge/skills-12-blue?style=flat-square)](#skills-列表)
 [![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
 [![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
 
@@ -60,6 +60,7 @@ git clone https://github.com/stvlynn/skills.git
 
 | Skill | 描述 | 依赖 |
 |-------|------|------|
+| **[kesha-voice-kit](skills/kesha-voice-kit/)** | 本地离线语音工具包 — 25 语言语音转文字（Apple Silicon 上比 Whisper 快 ~19×），TTS（Kokoro + Vosk-TTS + ~180 macOS 系统音色，支持 SSML），VAD，Rust 引擎 | macOS / Linux / Windows，`bun` |
 | **[qwen-tts](skills/qwen-tts/)** | 9 种音色 + 情感控制的文字转语音 | Apple Silicon、MLX |
 | **[qwen-asr](skills/qwen-asr/)** | 本地 FastAPI 语音转文字服务 | Apple Silicon、MLX |
 
@@ -92,6 +93,36 @@ git clone https://github.com/stvlynn/skills.git
 > 每个 skill 都有 `SKILL.md` 包含完整配置说明。以下为快速参考。
 >
 > 许可说明：`pv-tool` 内置了上游源码，并沿用其单独的非商用许可证。见 `skills/pv-tool/app/LICENSE` 和 `skills/pv-tool/app/COMMERCIAL.md`。
+
+<details>
+<summary><b>kesha-voice-kit</b> — 本地多语言 STT + TTS 语音工具包</summary>
+
+<br>
+
+安装 CLI 并下载引擎：
+
+```bash
+bun add -g @drakulavich/kesha-voice-kit
+kesha install           # 下载 ASR 引擎（~350 MB）
+kesha install --tts     # 可选：Kokoro + Vosk-TTS（~990 MB）
+```
+
+转录语音消息：
+
+```bash
+kesha --json voice.ogg
+```
+
+合成语音：
+
+```bash
+kesha say "你好，世界" > hello.wav
+kesha say "Hello" --format ogg-opus --out reply.ogg   # Telegram 原生语音消息格式
+```
+
+完整 OpenClaw 插件配置、语言列表及高级选项见 [SKILL.md](skills/kesha-voice-kit/SKILL.md)。
+
+</details>
 
 <details>
 <summary><b>clashctl-linux</b> — Linux 上的 Clash/Mihomo 初始化与运维</summary>
