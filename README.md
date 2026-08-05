@@ -60,7 +60,7 @@ git clone https://github.com/stvlynn/skills.git
 
 | Skill | Description | Requires |
 |-------|-------------|----------|
-| **[kesha-voice-kit](skills/kesha-voice-kit/)** | Local STT+TTS voice toolkit — 25-lang speech-to-text (~19× faster than Whisper on Apple Silicon), TTS (Kokoro + Vosk-TTS + ~180 macOS voices, SSML), VAD, language detection. Rust engine, no cloud required. | macOS / Linux / Windows, `bun` |
+| **[kesha-voice-kit](skills/kesha-voice-kit/)** | Local STT+TTS voice toolkit — 25-lang speech-to-text (~19× faster than Whisper on Apple Silicon), TTS in 9 languages (Kokoro + Vosk-TTS + ~180 macOS voices, SSML), VAD, speaker diarization, language detection. Rust engine, no cloud required. | macOS / Linux / Windows, `bun` |
 | **[qwen-tts](skills/qwen-tts/)** | Text-to-speech with 9 voices & emotion control | Apple Silicon, MLX |
 | **[qwen-asr](skills/qwen-asr/)** | Speech-to-text via local FastAPI service | Apple Silicon, MLX |
 
@@ -103,8 +103,8 @@ Install the CLI and download the engine:
 
 ```bash
 bun add -g @drakulavich/kesha-voice-kit
-kesha install           # downloads ASR engine (~350 MB)
-kesha install --tts     # optional: Kokoro + Vosk-TTS (~990 MB more)
+kesha install           # ASR engine — ~0.6 GB on Apple Silicon, ~2.5 GB on Linux/Windows
+kesha install --tts     # optional TTS voices; preview exact sizes with `kesha install --plan`
 ```
 
 Transcribe a voice message:

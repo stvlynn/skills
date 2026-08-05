@@ -60,7 +60,7 @@ git clone https://github.com/stvlynn/skills.git
 
 | Skill | 描述 | 依赖 |
 |-------|------|------|
-| **[kesha-voice-kit](skills/kesha-voice-kit/)** | 本地离线语音工具包 — 25 语言语音转文字（Apple Silicon 上比 Whisper 快 ~19×），TTS（Kokoro + Vosk-TTS + ~180 macOS 系统音色，支持 SSML），VAD，Rust 引擎 | macOS / Linux / Windows，`bun` |
+| **[kesha-voice-kit](skills/kesha-voice-kit/)** | 本地离线语音工具包 — 25 语言语音转文字（Apple Silicon 上比 Whisper 快 ~19×），9 语言 TTS（Kokoro + Vosk-TTS + ~180 macOS 系统音色，支持 SSML），VAD，说话人分离，Rust 引擎 | macOS / Linux / Windows，`bun` |
 | **[qwen-tts](skills/qwen-tts/)** | 9 种音色 + 情感控制的文字转语音 | Apple Silicon、MLX |
 | **[qwen-asr](skills/qwen-asr/)** | 本地 FastAPI 语音转文字服务 | Apple Silicon、MLX |
 
@@ -103,8 +103,8 @@ git clone https://github.com/stvlynn/skills.git
 
 ```bash
 bun add -g @drakulavich/kesha-voice-kit
-kesha install           # 下载 ASR 引擎（~350 MB）
-kesha install --tts     # 可选：Kokoro + Vosk-TTS（~990 MB）
+kesha install           # 下载 ASR 引擎（Apple Silicon ~0.6 GB，Linux/Windows ~2.5 GB）
+kesha install --tts     # 可选：TTS 音色；用 `kesha install --plan` 预览具体体积
 ```
 
 转录语音消息：
