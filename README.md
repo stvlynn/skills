@@ -4,7 +4,7 @@
 
 **Modular, reusable skills for AI coding agents.**
 
-[![Skills](https://img.shields.io/badge/skills-11-blue?style=flat-square)](#skills)
+[![Skills](https://img.shields.io/badge/skills-13-blue?style=flat-square)](#skills)
 [![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
 [![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
 
@@ -76,6 +76,12 @@ git clone https://github.com/stvlynn/skills.git
 |-------|-------------|----------|
 | **[atlassian-design](skills/atlassian-design/)** | Local Atlassian Design System reference skill for Atlaskit, ADS components, xcss, primitives, and Jira-style React UI patterns | None |
 | **[scroll-fade-mask](skills/scroll-fade-mask/)** | Implement and troubleshoot reusable scroll fade masks for lists, dropdowns, sidebars, modals, and chat panes across React, Vue, Svelte, and vanilla JS | None |
+
+### ✍️ Writing
+
+| Skill | Description | Requires |
+|-------|-------------|----------|
+| **[product-doc-writing-spec](skills/product-doc-writing-spec/)** | Write, format, localize, and review technical and product docs against a vendor-neutral style standard | None |
 
 ### 🛠️ Developer Tools
 
@@ -249,6 +255,21 @@ No runtime setup required. This skill packages a local mirror of the Atlassian D
 - Jira-style navigation, forms, layout, and feedback patterns
 
 Start with [references/index.md](skills/atlassian-design/references/index.md) to route to the right mirrored docs.
+
+</details>
+
+<details>
+<summary><b>product-doc-writing-spec</b> — Technical documentation writing standard</summary>
+
+<br>
+
+No runtime setup required. Use this skill when writing, editing, formatting, or reviewing:
+
+- product and operation guides
+- API and SDK references
+- troubleshooting guides, parameter tables, FAQs, and glossaries
+
+Start with [SKILL.md](skills/product-doc-writing-spec/SKILL.md). Topic rules live under `skills/product-doc-writing-spec/references/`.
 
 </details>
 

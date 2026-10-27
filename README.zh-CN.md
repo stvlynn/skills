@@ -4,7 +4,7 @@
 
 **模块化、可复用的 AI Agent 技能集合**
 
-[![Skills](https://img.shields.io/badge/skills-11-blue?style=flat-square)](#skills-列表)
+[![Skills](https://img.shields.io/badge/skills-13-blue?style=flat-square)](#skills-列表)
 [![Skills CLI](https://img.shields.io/badge/skills_cli-compatible-green?style=flat-square)](https://github.com/vercel-labs/skills)
 [![License](https://img.shields.io/github/license/stvlynn/skills?style=flat-square)](LICENSE)
 
@@ -76,6 +76,12 @@ git clone https://github.com/stvlynn/skills.git
 |-------|------|------|
 | **[atlassian-design](skills/atlassian-design/)** | 本地 Atlassian Design System 参考 skill，覆盖 Atlaskit、ADS 组件、`xcss`、primitives 和 Jira 风格 React 界面模式 | 无 |
 | **[scroll-fade-mask](skills/scroll-fade-mask/)** | 为列表、下拉框、侧边栏、弹层和聊天面板实现并排查可复用的滚动渐隐遮罩，支持 React、Vue、Svelte 和原生 JavaScript | 无 |
+
+### ✍️ 写作
+
+| Skill | 描述 | 依赖 |
+|-------|------|------|
+| **[product-doc-writing-spec](skills/product-doc-writing-spec/)** | 按中立规范撰写、排版、本地化和审校技术与产品文档 | 无 |
 
 ### 🛠️ 开发工具
 
@@ -249,6 +255,21 @@ cd /path/to/xiaohongshu-mcp
 - 参考 Jira 风格导航、表单、布局和反馈模式
 
 建议先从 [references/index.md](skills/atlassian-design/references/index.md) 开始定位对应文档。
+
+</details>
+
+<details>
+<summary><b>product-doc-writing-spec</b> — 技术文档写作规范</summary>
+
+<br>
+
+无需额外运行时配置。撰写、编辑、排版或审校以下文档时使用：
+
+- 产品文档与操作指南
+- API 与 SDK 参考
+- 故障排查、参数表、FAQ 和术语表
+
+从 [SKILL.md](skills/product-doc-writing-spec/SKILL.md) 开始。分主题规则在 `skills/product-doc-writing-spec/references/`。
 
 </details>
 
